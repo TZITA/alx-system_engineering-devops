@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#Displays 'bad luck' at 4th iteration, 'good luck' at 8th iteration 
+#and 'Best School' in other iteration
+i=1
+while ((i <= 10))
+do
+	if [ $i == 4 ]; then
+		echo 'bad luck'
+	elif [ $i == 8 ]; then
+		echo 'good luck'
+	else
+		echo 'Best School'
+	fi
+	((i++))
+done
