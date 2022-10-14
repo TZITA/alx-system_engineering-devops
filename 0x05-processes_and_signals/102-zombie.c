@@ -29,6 +29,7 @@ int main(void)
 {
 	pid_t pid;
 	char i = 0;
+
 	while (i < 5)
 	{
 		pid = fork();
