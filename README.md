@@ -1,7 +1,8 @@
-#ALX SYSTEM ENGINEERING DEVOPS
-###This repository contains projects focusing on shell basics, shell permissions and so on.
+ALX SYSTEM ENGINEERING DEVOPS
 
-##List of projects
+This repository contains projects focusing on shell basics, shell permissions and so on.
+
+List of projects
 1. Shell Basics
 2. Shell Permissions
 3. Shell Redirections
@@ -11,5 +12,5 @@
 7. Networking Basics 1
 8. Networking Basics 2
 
-##Challenges
+Challenges
 1. Command line for the win
