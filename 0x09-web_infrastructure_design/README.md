@@ -6,6 +6,9 @@ In this case, LNMP: L-Linux, N-Nginx, M-MySQL and P-Python.
 A three server web infrastructure that hosts the website www.foobar.com with HAproxy load balancer.
 ## Task 2: Secured and monitored web infrastructure
 A three server web infrastructure that hosts the website www.foobar.com. It features: 
-   i. security with one terminating(at Load Balancer) SSL (Secure Sockets Layer) certificate serving the website www.foobar.com over HTTPS protocol 
-   ii. three firewalls protecting the three servers
-   iii. three Datadog agents monitoring the three servers and directly reporting to Datadog
+
+ -- security with one terminating(at Load Balancer) SSL (Secure Sockets Layer) certificate serving the website www.foobar.com over HTTPS protocol, 
+ 
+ -- three firewalls protecting the three server, and
+ 
+ -- three Datadog agents monitoring the three servers and directly reporting to Datadog.
