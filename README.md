@@ -11,6 +11,7 @@ List of projects
 6. Regular Expressions
 7. Networking Basics 1
 8. Networking Basics 2
+9. Web Infrastructure Design
 
 Challenges
 1. Command line for the win
