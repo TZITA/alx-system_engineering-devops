@@ -1,6 +1,6 @@
 # Creates a file in the directory /tmp using puppet.
 file { 'school':
-  ensure  => present,
+  ensure  => file,
   content => 'I love Puppet',
   owner   => 'www-data',
   group   => 'www-data',
