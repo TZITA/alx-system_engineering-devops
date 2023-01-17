@@ -7,9 +7,9 @@ import sys
 
 
 if __name__ == '__main__':
-    target_url = "https://jsonplaceholder.typicode.com/"
-    user = requests.get(target_url + "users/{}".format(sys.argv[1])).json()
-    tasks = requests.get(target_url + "todos", params={"userId": sys.argv[1]}).json()
+    t_url = "https://jsonplaceholder.typicode.com/"
+    user = requests.get(t_url + "users/{}".format(sys.argv[1])).json()
+    tasks = requests.get(t_url + "todos", params={"userId": sys.argv[1]}).json()
 
     completed = []
     for i in tasks:
