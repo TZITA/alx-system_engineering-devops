@@ -4,6 +4,8 @@
 #	- a redirection 301 Moved Permanently
 
 file { '/etc/nginx/sites-available/default':
+  ensure  => file,
+  path    => '/etc/nginx/sites-available/default',
   content => "server {
       listen 80;
       listen [::]:80 default_server;
