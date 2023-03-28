@@ -11,8 +11,7 @@ file { '/etc/nginx/sites-available/default':
       listen [::]:80 default_server;
       root /etc/nginx/html;
       index index.html index.htm;
-      location /redirect_me { 
-          return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+      return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }",
   notify  => Service['nginx'],
 }
