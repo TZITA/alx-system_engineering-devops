@@ -8,7 +8,6 @@ package { 'nginx':
 
 file { '/etc/nginx/sites-available/default':
   ensure  => file,
-  path    => '/etc/nginx/sites-available/default',
   content => @(END),
     server {
       listen 80;
