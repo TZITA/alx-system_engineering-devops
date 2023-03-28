@@ -7,7 +7,6 @@ package { 'nginx':
   ensure => installed,
 }
 
-}
 file { '/etc/nginx/sites-available/default':
   content => "server {
       listen 80;
@@ -15,4 +14,10 @@ file { '/etc/nginx/sites-available/default':
       index index.html index.htm;
       return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }",
+  notify  => Service['nginx'],
+}
+
+service { 'nginx':
+  ensure => running,
+  enable => true,
 }
