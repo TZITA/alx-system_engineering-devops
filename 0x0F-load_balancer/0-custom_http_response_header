@@ -10,7 +10,7 @@ printf %s "server {
      listen      [::]:80 default_server;
      root        /etc/nginx/html/;
      index       index.html index.htm;
-     add_header X-Served-By $hs;
+     add_header X-Served-By "$hs";
 }" > /etc/nginx/sites-available/default
 
 service nginx restart
