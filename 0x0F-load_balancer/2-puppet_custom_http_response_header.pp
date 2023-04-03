@@ -1,5 +1,4 @@
--- A puppet script that automates the task of creating a custom HTTP header response
-
+# A puppet script that automates the task of creating a custom HTTP header
 package { 'nginx':
   ensure   => latest,
   provider => 'apt',
@@ -10,9 +9,10 @@ service { 'nginx':
   enable => true,
 }
 
-file { '':
+file { '/etc/nginx/html/index.html':
   ensure  => file,
-  content => "Hello World",
+  content => 'Hello World',
+  notify  => Service['nginx'],
 }
 
 $str = "server {
@@ -20,10 +20,11 @@ $str = "server {
      listen      [::]:80 default_server;
      root        /etc/nginx/html/;
      index       index.html index.htm;
-     add_header X-Served-By $trusted['hostname'];
+     add_header X-Served-By ${trusted['hostname']};
 }"
 
 file { '/etc/nginx/sites-available/default':
-  ensure  => file,
+  ensure  => present,
   content => $str,
+  notify  => Service['nginx'],
 }
