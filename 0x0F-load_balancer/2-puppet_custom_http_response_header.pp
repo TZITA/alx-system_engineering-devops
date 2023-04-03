@@ -3,12 +3,23 @@ package { 'nginx':
   ensure   => installed,
 }
 
+file { '/etc/nginx/html':
+  ensure => directory,
+  mode   => '0777',
+}
+
+file { '/etc/nginx/html/index.html':
+  ensure  => file,
+  mode    => '0777',
+  content => 'Hello World!',
+}
+
 file { '/etc/nginx/sites-available/default':
   ensure  => present,
   content => "server {
      listen      80 default_server;
      listen      [::]:80 default_server;
-     root        /var/www/html/;
+     root        /etc/nginx/html;
      index       index.html index.htm;
      add_header X-Served-By ${hostname};
 }",
