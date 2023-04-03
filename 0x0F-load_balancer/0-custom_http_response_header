@@ -4,7 +4,7 @@
 # 	The value of the HTTP header is the hostname of the server
 # shellcheck disable=SC2154
 
-hs=hostname
+hs=$(hostname)
 printf %s "server {
      listen      80 default_server;
      listen      [::]:80 default_server;
@@ -12,3 +12,5 @@ printf %s "server {
      index       index.html index.htm;
      add_header X-Served-By $hs;
 }" > /etc/nginx/sites-available/default
+
+service nginx restart
