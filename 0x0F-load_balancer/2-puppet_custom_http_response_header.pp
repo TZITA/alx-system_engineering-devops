@@ -10,8 +10,20 @@ service { 'nginx':
   enable => true,
 }
 
+file { '':
+  ensure  => file,
+  content => "Hello World",
+}
+
+$str = "server {
+     listen      80 default_server;
+     listen      [::]:80 default_server;
+     root        /etc/nginx/html/;
+     index       index.html index.htm;
+     add_header X-Served-By $trusted['hostname'];
+}"
+
 file { '/etc/nginx/sites-available/default':
   ensure  => file,
-  content => "server {\nlisten\t80 default_server;\nlisten\t[::]:80 default_server;\n
-root\t/etc/nginx/html/;\nindex\tindex.html index.htm;\nadd_header X-Served-By "$hs';}',
+  content => $str,
 }
