@@ -8,9 +8,9 @@ file { '/etc/nginx/sites-available/default':
   content => "server {
      listen      80 default_server;
      listen      [::]:80 default_server;
-     root        /etc/nginx/html/;
+     root        /var/www/html/;
      index       index.html index.htm;
-     add_header X-Served-By $hostname;
+     add_header X-Served-By ${hostname};
 }",
   notify  => Service['nginx'],
 }
