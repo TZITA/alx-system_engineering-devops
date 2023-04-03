@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Configure Nginx's HTTP response contains a header (on web-01 and web-02)
+# 	The name of the custom HTTP header is X-Served-By
+# 	The value of the HTTP header is the hostname of the server
+# shellcheck disable=SC2154
+
+hs=hostname
+printf %s "server {
+     listen      80 default_server;
+     listen      [::]:80 default_server;
+     root        /etc/nginx/html/;
+     index       index.html index.htm;
+     add_header X-Served-By $hs;
+}" > /etc/nginx/sites-available/default
