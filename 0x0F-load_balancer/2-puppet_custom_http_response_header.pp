@@ -1,12 +1,6 @@
 # A puppet script that automates the task of creating a custom HTTP header
 package { 'nginx':
-  ensure   => latest,
-  provider => 'apt',
-}
-
-service { 'nginx':
-  ensure => running,
-  enable => true,
+  ensure   => installed,
 }
 
 file { '/etc/nginx/html/index.html':
@@ -15,16 +9,20 @@ file { '/etc/nginx/html/index.html':
   notify  => Service['nginx'],
 }
 
-$str = "server {
+$hostname = $facts['hostname']
+file { '/etc/nginx/sites-available/default':
+  ensure  => present,
+  content => "server {
      listen      80 default_server;
      listen      [::]:80 default_server;
      root        /etc/nginx/html/;
      index       index.html index.htm;
-     add_header X-Served-By ${trusted['hostname']};
-}"
-
-file { '/etc/nginx/sites-available/default':
-  ensure  => present,
-  content => $str,
+     add_header X-Served-By $hostname};
+}",
   notify  => Service['nginx'],
+}
+
+service { 'nginx':
+  ensure => running,
+  enable => true,
 }
