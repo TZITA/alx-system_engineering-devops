@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Fixes the problem in task 0 in a short and sweet way.
+service nginx start
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx restart
