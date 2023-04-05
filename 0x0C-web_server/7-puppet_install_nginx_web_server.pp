@@ -6,6 +6,11 @@ package { 'nginx':
   ensure => installed,
 }
 
+service { 'nginx':
+  ensure => running,
+  enable => true,
+}
+
 file { '/etc/nginx/sites-available/default':
   ensure  => file,
   content => @(END),
@@ -19,9 +24,4 @@ file { '/etc/nginx/sites-available/default':
     }
     | END
   notify  => Service['nginx'],
-}
-
-service { 'nginx':
-  ensure => running,
-  enable => true,
 }
