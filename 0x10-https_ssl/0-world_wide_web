@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# A Bash script that will display information about subdomains.
+# shellcheck disable=SC2086
+if [ $# -eq 2 ]; then
+	Ip=$(dig $2.$1 +short)
+	res=$(dig $2.$1 | grep -A1 'ANSWER SECTION:')
+	r_type=$(awk 'match($0, / IN A /) {print substr($0, RSTART+4, 1)}' $res)
+	echo "The subdomain $2 is a $r_type record and points to $Ip"
+fi
