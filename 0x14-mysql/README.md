@@ -18,4 +18,8 @@ Creating a user 'replica_user', granting the REPLICATION SLAVE privilege to the 
 
 ## Task 4:
 ## Setup a Primary-Replica infrastructure using MySQL
+Edited mysql config files to build a MASTER-SLAVE DATABASE infrastructure. The MASTER database is located on the web-01 server and the SLAVE database is on the web-02 server. 
 
+##Task 5:
+## MySQL backup
+A bash script that generates a MySQL dump and creates a compressed archive of all databases. The archive is named with the format of 'day-month-year.tar.gz'.
