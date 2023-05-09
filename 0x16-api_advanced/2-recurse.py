@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-""""""
+"""xxxxxxx x xxxxxxx xxxxxxxxxx"""
 import requests
 
 
 def recurse(subreddit, after=None):
+    """ccccccccc cccccccccccccccc cccccccccc cc ccc cccc ccccccccc"""
     headers = {'User-Agent': 'tzita/v1.0'}
     url = f'https://www.reddit.com/r/{subreddit}/hot.json?limit=100'
     if after:
