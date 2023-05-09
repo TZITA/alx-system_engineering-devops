@@ -3,24 +3,24 @@
 import requests
 
 
-def recurse(subreddit, after=None):
+def recurse(subreddit, hot_list=[], after=None, counter=0):
     """
     Returns a list of titles of all hot articles for a given subreddit.
     """
     headers = {'User-Agent': 'tzita/v1.0'}
+    params = {'after': after, 'counter': counter, 'limit': 100}
     url = f'https://www.reddit.com/r/{subreddit}/hot.json?limit=100'
-    if after:
-        url += f'&after={after}'
-    response = requests.get(url, headers=headers, allow_redirects=False)
+    response = requests.get(url, headers=headers, params=params)
     if response.status_code != 200:
         return None
     data = response.json()['data']
+    counter += data['dist']
     if not data['children']:
         return None
-    posts = [post['data']['title'] for post in data['children']]
-    next_page = data['after']
-    if next_page:
-        more_posts = recurse(subreddit, next_page)
+    [hot_list.append(post['data']['title']) for post in data['children']]
+    after = data['after']
+    if after:
+        more_posts = recurse(subreddit, hot_list, after, counter)
         if more_posts:
-            posts += more_posts
-    return posts
+            hot_list += more_posts
+    return hot_list
