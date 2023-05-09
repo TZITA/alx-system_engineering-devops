@@ -9,7 +9,7 @@ def recurse(subreddit, hot_list=[], after=None, counter=0):
     """
     headers = {'User-Agent': 'tzita/v1.0'}
     params = {'after': after, 'counter': counter, 'limit': 100}
-    url = f'https://www.reddit.com/r/{subreddit}/hot.json?limit=100'
+    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     response = requests.get(url, headers=headers, params=params)
     if response.status_code != 200:
         return None
