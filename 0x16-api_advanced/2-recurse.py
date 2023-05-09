@@ -11,7 +11,7 @@ def recurse(subreddit, after=None):
     url = f'https://www.reddit.com/r/{subreddit}/hot.json?limit=100'
     if after:
         url += f'&after={after}'
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, allow_redirects=False)
     if response.status_code != 200:
         return None
     data = response.json()['data']
