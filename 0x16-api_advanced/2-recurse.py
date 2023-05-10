@@ -15,12 +15,8 @@ def recurse(subreddit, hot_list=[], after=None, counter=0):
         return None
     data = response.json()['data']
     counter += data['dist']
-    if not data['children']:
-        return None
     [hot_list.append(post['data']['title']) for post in data['children']]
     after = data['after']
     if after:
-        more_posts = recurse(subreddit, hot_list, after, counter)
-        if more_posts:
-            hot_list += more_posts
+        return recurse(subreddit, hot_list, after, counter)
     return hot_list
