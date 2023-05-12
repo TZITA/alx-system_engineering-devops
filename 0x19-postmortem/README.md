@@ -1,5 +1,5 @@
 # Company X Database Overload Incident Report
-[database MEME](https://www.freecodecamp.org/news/content/images/2020/04/image-135.png)
+![database MEME](https://www.freecodecamp.org/news/content/images/2020/04/image-135.png)
 
 The following is the incident report for company X database overload that occurred on May 5<sup>th</sup>, 2023.
 
