@@ -10,7 +10,11 @@ server {
         add_header X-Served-By $hostname;
         }
 
-        location /airbnb-dynamic/number_odd_or_even/([0-9]+) {
+        location ~* "^/number_odd_or_even/([0-9]+)$" {
         proxy_pass http://localhost:5001;
+        }
+
+        location ~* "^/airbnb-dynamic/number_odd_or_even/([0-9]+)$" {
+        rewrite ^/airbnb-dynamic/number_odd_or_even/([0-9]+)$ /number_odd_or_even/$1 break;        proxy_pass http://localhost:5001;
         }
 }
