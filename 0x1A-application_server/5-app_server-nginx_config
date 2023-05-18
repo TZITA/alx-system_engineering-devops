@@ -15,10 +15,15 @@ server {
         }
 
         location ~* "^/airbnb-dynamic/number_odd_or_even/([0-9]+)$" {
-        rewrite ^/airbnb-dynamic/number_odd_or_even/([0-9]+)$ /number_odd_or_even/$1 break;        proxy_pass http://localhost:5001;
+        rewrite ^/airbnb-dynamic/number_odd_or_even/([0-9]+)$ /number_odd_or_even/$1 break;
+        proxy_pass http://localhost:5001;
         }
 
         location /api {
         proxy_pass http://localhost:5002/api;
+        }
+
+        location / {
+        proxy_pass http://localhost:5003/2-hbnb;
         }
 }
