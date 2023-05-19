@@ -1,6 +1,6 @@
 # A puppet manifest to config nginx and sys config files prevent too many open files error
 exex { 'fix--for-nginx':
-  command => 'sed -E -i "s/ULIMIT=\"-n [[:digit:]]+\"/ULIMIT=\"-n 4096\"/" /etc/default/nginx',
+  command => 'sed "s/15/4096/" /etc/default/nginx',
   path    => 'usr/local/bin:/bin'
 }
 
