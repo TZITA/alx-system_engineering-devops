@@ -2,10 +2,9 @@
 exex { 'fix--for-nginx':
   command => 'sed -E -i "s/ULIMIT=\"-n [[:digit:]]+\"/ULIMIT=\"-n 4096\"/" /etc/default/nginx',
   path    => ['usr/local/bin:/bin'],
-  notify  => Service['nginx'],
 }
 
-service { 'nginx':
-  ensure => running,
-  enable => true,
+-> exec { 'nginx-re':
+  command => 'nginx restart',
+  path    => '/etc/init.d/',
 }
